@@ -1,0 +1,9 @@
+.quick-link-card {
+  background-color: orange;
+  transition: transform 0.2s ease-in-out;
+}
+
+.quick-link-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
