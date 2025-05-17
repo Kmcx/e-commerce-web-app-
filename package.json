@@ -1,0 +1,14 @@
+{
+  "name": "ecommerce-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start",
+    "seed": "cd backend && node -r dotenv/config db/seed.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
