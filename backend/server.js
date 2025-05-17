@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
-
+const path = require('path');
 const app = express();
 const db = new sqlite3.Database(process.env.DB_FILE);
 
@@ -53,4 +53,10 @@ app.get('/api/slider-items', (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Backend working on: http://localhost:${PORT}`);
+});
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
