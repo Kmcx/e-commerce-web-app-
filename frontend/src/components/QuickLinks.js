@@ -7,21 +7,18 @@ function QuickLinks() {
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/quick-links')
-      .then(res => setLinks(res.data.slice(0, 8))) // sadece 8 tane
+      .then(res => setLinks(res.data.slice(0, 12))) 
       .catch(err => console.error('Error fetching quick links:', err));
   }, []);
 
   return (
     <div className="container mt-4">
-      <h5>Quick Links</h5>
-      <div className="row">
-        {links.map(link => (
-          <div className="col-6 col-md-3 mb-3" key={link.id}>
-            <div className="quick-link-card text-center text-white rounded p-2">
-              <a href={link.url} className="text-white text-decoration-none d-block">
-                {link.title}
-              </a>
-            </div>
+      <div className="d-flex justify-content-between flex-wrap gap-2">
+        {links.map((link, index) => (
+          <div className="quick-link-box text-center" key={index}>
+            <a href={link.url} className="text-white text-decoration-none d-block h-100 w-100">
+              {link.title}
+            </a>
           </div>
         ))}
       </div>

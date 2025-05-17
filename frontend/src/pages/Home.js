@@ -1,36 +1,38 @@
 import React from 'react';
 import MainNavbar from '../components/Navbar';
-import MainSlider from '../components/MainSlider';
 import QuickLinks from '../components/QuickLinks';
-import SpecialOffers from '../components/SpecialOffers';
+import MainSlider from '../components/MainSlider';
+import TopBanner from '../components/TopBanner';
 import Recommendations from '../components/Recommendations';
 import VisitedProducts from '../components/VisitedProducts';
-import TopBanner from '../components/TopBanner'; // yeni eklenecek
-import DailyDeal from '../components/DailyDeal'; // yeni eklenecek
+import SpecialOffers from '../components/SpecialOffers';
 
 function Home() {
   return (
-    <>
+    <div>
       <MainNavbar />
-
       <QuickLinks />
-
+      
+      <div className="container mt-4">
+  <div className="row g-3 align-items-stretch">
+    <div className="col-md-8">
       <MainSlider />
-
-      <div className="container my-4">
-        <div className="row">
-          <div className="col-md-8">
-            <TopBanner />
-          </div>
-          <div className="col-md-4">
-            <DailyDeal />
-          </div>
-        </div>
+    </div>
+    <div className="col-md-4">
+      <div className="special-offer-box h-100">
+        <SpecialOffers />
       </div>
+    </div>
+  </div>
+</div>
 
+
+
+
+      
       <Recommendations />
       <VisitedProducts />
-    </>
+    </div>
   );
 }
 

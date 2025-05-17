@@ -12,7 +12,7 @@ function MainSlider() {
   }, []);
 
   return (
-    <Container className="mt-4">
+    <div className="mt-4">
       <Carousel>
         {items.map((item, index) => (
           <Carousel.Item key={item.id}>
@@ -28,7 +28,7 @@ function MainSlider() {
           </Carousel.Item>
         ))}
       </Carousel>
-    </Container>
+    </div>
   );
 }
 

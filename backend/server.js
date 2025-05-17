@@ -49,7 +49,7 @@ app.get('/api/slider-items', (req, res) => {
   });
 });
 
-// Sunucuyu başlat
+// start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Backend working on: http://localhost:${PORT}`);

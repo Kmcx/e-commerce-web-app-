@@ -1,0 +1,46 @@
+.recommend-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.recommend-card {
+  min-width: 180px;
+  max-width: 180px;
+  cursor: pointer;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.recommend-image {
+  height: 140px;
+  object-fit: cover;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  right: -10px; 
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background-color: #ddd;
+  color: #333;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+}
+
+.scroll-button:hover {
+  background-color: #bbb;
+}
+
+

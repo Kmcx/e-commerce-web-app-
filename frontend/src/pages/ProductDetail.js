@@ -13,7 +13,7 @@ function ProductDetail() {
     axios.get(`http://localhost:5000/api/products/${id}`)
       .then(res => {
         setProduct(res.data);
-        dispatch(addVisitedProduct(res.data)); // Redux’a ekle
+        dispatch(addVisitedProduct(res.data)); // Redux
       })
       .catch(err => console.error('Error fetching product:', err));
   }, [id, dispatch]);

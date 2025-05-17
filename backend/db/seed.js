@@ -3,7 +3,7 @@ const db = new sqlite3.Database(process.env.DB_FILE || './db/database.sqlite3');
 
 
 db.serialize(() => {
-  // Ürün tablosu
+  // products
   db.run(`CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -13,14 +13,14 @@ db.serialize(() => {
     imageUrl TEXT
   )`);
 
-  // QuickLinks tablosu
+  // QuickLinks 
   db.run(`CREATE TABLE IF NOT EXISTS quick_links (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     url TEXT
   )`);
 
-  // SliderItems tablosu
+  // SliderItems 
   db.run(`CREATE TABLE IF NOT EXISTS slider_items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     heading TEXT,
@@ -28,7 +28,7 @@ db.serialize(() => {
     productId INTEGER
   )`);
 
-  // Örnek seed verileri
+  // example seed data
 const insertProduct = db.prepare(`INSERT INTO products (name, price, rating, type, imageUrl) VALUES (?, ?, ?, ?, ?)`);
 
 for (let i = 1; i <= 10; i++) {
@@ -51,7 +51,7 @@ insertProduct.finalize();
 
   insertSlider.finalize();
 
-  // İhtiyaca göre diğer seed’leri de ekleyebilirsin
+  
   console.log('Seed completed');
   db.close();
 });

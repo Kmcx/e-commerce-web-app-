@@ -1,43 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './Recommendations.css';
 
 function Recommendations() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/products?type=recommendation')
-      .then(res => setProducts(res.data.slice(0, 5))) // sadece 5 tane göster
+      .then(res => setProducts(res.data.slice(0, 10)))
       .catch(err => console.error('Error fetching recommendations:', err));
   }, []);
 
-  const renderStars = (count) => {
-    return Array.from({ length: 5 }).map((_, i) => (
-      <span key={i} className={i < count ? 'text-warning' : 'text-secondary'}>
-        ★
-      </span>
-    ));
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+    }
   };
 
   return (
-    <Container className="mt-5">
-      <h5>Sana Özel Öneriler</h5>
-      <Row>
+    <Container className="mt-5 position-relative">
+      <h5 className="mb-3">Sana Özel Öneriler</h5>
+
+      
+      <div className="scroll-button" onClick={scrollRight}>
+        ›
+      </div>
+
+      <div className="recommend-scroll-container" ref={scrollRef}>
         {products.map(product => (
-          <Col md={4} lg={3} key={product.id} className="mb-4">
-            <Card onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={product.imageUrl} style={{ height: '200px', objectFit: 'cover' }} />
-              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>{product.price}₺</Card.Text>
-                <div>{renderStars(product.rating)}</div>
-              </Card.Body>
-            </Card>
-          </Col>
+          <Card
+            key={product.id}
+            className="recommend-card me-2"
+            onClick={() => navigate(`/product/${product.id}`)}
+          >
+            <Card.Img variant="top" src={product.imageUrl} className="recommend-image" />
+            <Card.Body className="p-2">
+              <Card.Title className="fs-6">{product.name}</Card.Title>
+              <Card.Text className="text-muted">{product.price} ₺</Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-      </Row>
+      </div>
     </Container>
   );
 }
