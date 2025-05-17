@@ -1,13 +1,13 @@
-# 🛒 E-Commerce Landing Page (React + Express)
+# E-Commerce Landing Page (React + Express)
 
 A responsive e-commerce web application built with **React**, **Express.js**, **SQLite**, and **Bootstrap**.  
 The app includes rotating product sliders, campaign quick links, and personalized product suggestions.
 
 ---
 
-## ✨ Features
+## Features
 
-### 🖥️ Frontend (React)
+###  Frontend (React)
 - **Sticky responsive navbar** with category and submenu support
 - **12 Quick Links** displayed as small square campaign buttons
 - **Main Slider** for rotating campaigns (data from backend)
@@ -16,7 +16,7 @@ The app includes rotating product sliders, campaign quick links, and personalize
 - **"Gezilen Ürünler"**: Tracks visited products using **Redux**
 - **Responsive layout** using Bootstrap Grid
 
-### 🔧 Backend (Express.js)
+###  Backend (Express.js)
 - **SQLite database** (no in-memory data)
 - RESTful API:
   - `GET /api/products?type=special` – Special electronic deals
@@ -27,7 +27,7 @@ The app includes rotating product sliders, campaign quick links, and personalize
 
 ---
 
-## 🗂️ Tech Stack
+##  Tech Stack
 
 | Area       | Tech                        |
 |------------|-----------------------------|
