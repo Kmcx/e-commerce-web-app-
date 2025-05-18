@@ -55,8 +55,10 @@ app.listen(PORT, () => {
   console.log(`Backend working on: http://localhost:${PORT}`);
 });
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, './build')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+  if (!req.path.startsWith('/api')) {
+    res.sendFile(path.join(__dirname, './build/index.html'));
+  }
 });
