@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ecommerce-app
+    env: node
+    rootDir: backend
+    buildCommand: cd ../frontend && npm install && npm run build && cd ../backend && npm install
+    startCommand: node server.js
+    envVars:
+      - key: DB_FILE
+        value: ./db/database.sqlite3
+      - key: PORT
+        value: 10000
+      - key: REACT_APP_API_URL
+        value: https://e-commerce-web-app-ry0h.onrender.com
