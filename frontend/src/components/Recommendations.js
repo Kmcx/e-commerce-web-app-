@@ -11,8 +11,19 @@ function Recommendations() {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/api/products?type=recommendation`)
-      .then(res => setProducts(res.data.slice(0, 10)))
-      .catch(err => console.error('Error fetching recommendations:', err));
+      .then(res => {
+        console.log("Recommendations response:", res.data);
+        if (Array.isArray(res.data)) {
+          setProducts(res.data.slice(0, 10));
+        } else {
+          console.warn('Expected array but got:', res.data);
+          setProducts([]);
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching recommendations:', err);
+        setProducts([]);
+      });
   }, []);
 
   const scrollRight = () => {
@@ -25,13 +36,12 @@ function Recommendations() {
     <Container className="mt-5 position-relative">
       <h5 className="mb-3">Sana Özel Öneriler</h5>
 
-      
       <div className="scroll-button" onClick={scrollRight}>
         ›
       </div>
 
       <div className="recommend-scroll-container" ref={scrollRef}>
-        {products.map(product => (
+        {Array.isArray(products) && products.map(product => (
           <Card
             key={product.id}
             className="recommend-card me-2"
