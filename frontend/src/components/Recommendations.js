@@ -10,7 +10,7 @@ function Recommendations() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products?type=recommendation')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/products?type=recommendation`)
       .then(res => setProducts(res.data.slice(0, 10)))
       .catch(err => console.error('Error fetching recommendations:', err));
   }, []);

@@ -9,7 +9,7 @@ function SpecialOffers() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products?type=special')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/products?type=special`)
       .then(res => setProducts(res.data.slice(0, 3))) 
       .catch(err => console.error('Error fetching special offers:', err));
   }, []);

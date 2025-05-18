@@ -6,7 +6,7 @@ function QuickLinks() {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/quick-links')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/quick-links`)
       .then(res => setLinks(res.data.slice(0, 12))) 
       .catch(err => console.error('Error fetching quick links:', err));
   }, []);

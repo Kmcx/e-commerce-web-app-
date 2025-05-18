@@ -7,11 +7,12 @@ function DailyDeal() {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/products?type=special')
-      .then(res => setProduct(res.data[0]))
-      .catch(err => console.error('Error fetching daily deal:', err));
-  }, []);
+useEffect(() => {
+  axios.get(`${process.env.REACT_APP_API_URL}/api/products?type=special`)
+    .then(res => setProduct(res.data[0]))
+    .catch(err => console.error('Error fetching daily deal:', err));
+}, []);
+
 
   if (!product) return null;
 

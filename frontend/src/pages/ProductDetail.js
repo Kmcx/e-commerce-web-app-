@@ -10,7 +10,7 @@ function ProductDetail() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/products/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`)
       .then(res => {
         setProduct(res.data);
         dispatch(addVisitedProduct(res.data)); // Redux

@@ -6,7 +6,7 @@ function MainSlider() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/slider-items')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/slider-items`)
       .then(res => setItems(res.data))
       .catch(err => console.error('Error fetching slider items:', err));
   }, []);
