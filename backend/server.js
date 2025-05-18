@@ -6,8 +6,12 @@ const path = require('path');
 const app = express();
 const db = new sqlite3.Database(process.env.DB_FILE);
 
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://e-commerce-web-app-ry0h.onrender.com'
+}));
 app.use(express.json());
+
 
 // GET /api/products?type=slider|campaign|special|recommendation
 app.get('/api/products', (req, res) => {
