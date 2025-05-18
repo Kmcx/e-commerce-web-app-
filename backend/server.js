@@ -1,4 +1,3 @@
-// === backend/server.js ===
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -6,7 +5,11 @@ const sqlite3 = require('sqlite3');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*', 
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json());
 
 const db = new sqlite3.Database(process.env.DB_FILE || './db/database.sqlite3');
