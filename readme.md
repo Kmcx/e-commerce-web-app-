@@ -3,8 +3,9 @@
 A responsive e-commerce web application built with **React**, **Express.js**, **SQLite**, and **Bootstrap**.  
 The app includes rotating product sliders, campaign quick links, and personalized product suggestions.
 
-## Deploy : https://e-commerce-web-app-qkxe.onrender.com
 
+## Watch Video !! : https://youtu.be/7UnNAPorhOg
+## Deploy : https://e-commerce-web-app-ry0h.onrender.com
 ---
 
 ## Features
